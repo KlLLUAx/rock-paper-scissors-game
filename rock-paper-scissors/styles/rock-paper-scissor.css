@@ -4,9 +4,16 @@ body {
   font-family: Arial;
 }
 
+.container{
+  width: 400px; /* Set your desired width */
+  margin: auto;
+  margin-top: 50px;
+}
+
 .title {
   font-size: 30px;
   font-weight: bold;
+  margin-bottom: 100px;
 }
 
 .move-icon {
