@@ -42,3 +42,12 @@ body {
   font-size: 15px;
 
 }
+.auto-play-button{
+  border: none;
+  padding: 8px 15px;
+  font-size: 15px;
+}
+.auto-play-activated{
+  background-color: black;
+  color: white;
+}

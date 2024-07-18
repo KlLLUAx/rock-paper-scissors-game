@@ -1,8 +1,12 @@
+let isAutoPlay = false;
+let intervalId;
+
 //buttons
 const rockButton = document.querySelector(".js-rock-button");
 const paperButton = document.querySelector(".js-paper-button");
 const scissorButton = document.querySelector(".js-scissor-button");
 const resetButton = document.querySelector(".js-reset-button");
+const autoPlayButton = document.querySelector(".js-auto-play-button");
 
 //buttons events
 rockButton.addEventListener("click", () => {
@@ -19,8 +23,34 @@ scissorButton.addEventListener("click", () => {
 
 resetButton.addEventListener("click", () => {
   resetPoints();
+});
+
+
+
+autoPlayButton.addEventListener("click",()=>{
+  autoplay();
 })
 
+function autoplay(){
+  if(!isAutoPlay){
+    
+    intervalId = setInterval(()=>{
+      let autoChoice = computersPlay();
+      playGame(autoChoice);
+      isAutoPlay = true;
+    },1200)
+
+    autoPlayButton.classList.add("auto-play-activated");
+    autoPlayButton.innerHTML = 'Stop Auto Play';
+
+    return;
+  }
+  clearInterval(intervalId)
+  isAutoPlay = false;
+  autoPlayButton.classList.remove("auto-play-activated");
+  autoPlayButton.innerHTML = 'Auto Play';
+
+}
 //data storage
 let gameData = JSON.parse(localStorage.getItem('gameData')) || {
 
