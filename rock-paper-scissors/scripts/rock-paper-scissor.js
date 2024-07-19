@@ -26,11 +26,23 @@ resetButton.addEventListener("click", () => {
 });
 
 
-
 autoPlayButton.addEventListener("click",()=>{
   autoplay();
 })
 
+document.body.addEventListener("keydown",(event)=>{
+switch(event.key){
+case 'r': 
+playGame('rock');
+break;
+case 'p': 
+playGame('paper');
+break;
+case 's': 
+playGame('scissor');
+break;
+}
+})
 function autoplay(){
   if(!isAutoPlay){
     
@@ -51,6 +63,7 @@ function autoplay(){
   autoPlayButton.innerHTML = 'Auto Play';
 
 }
+
 //data storage
 let gameData = JSON.parse(localStorage.getItem('gameData')) || {
 
@@ -185,7 +198,7 @@ function updateData() {
 
     document.querySelector('.js-score').innerHTML = `Wins: ${gameData.wins}, Losses: ${gameData.losses}, Ties: ${gameData.ties}`;
 
-    document.querySelector('.js-result').innerHTML = `Result: ${gameData.result} `
+    document.querySelector('.js-result').innerHTML = `Result: ${gameData.result} `;
 
     document.querySelector('.js-moves').innerHTML = `You: <img src="images/${gameData.playersMove}-emoji.png" class="move-icon">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Computer: <img src="images/${gameData.computersChoice}-emoji.png" class="move-icon"> `
 
