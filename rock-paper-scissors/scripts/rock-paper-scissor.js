@@ -34,13 +34,19 @@ document.body.addEventListener("keydown",(event)=>{
 switch(event.key){
 case 'r': 
 playGame('rock');
-break;
+  break;
 case 'p': 
 playGame('paper');
-break;
+  break;
 case 's': 
 playGame('scissor');
+  break;
+case 'a':
+  autoplay();
 break;
+case 'Backspace':
+  resetPoints();
+  break;
 }
 })
 function autoplay(){
@@ -172,17 +178,39 @@ function computersPlay() {
 
 }
 
+function confirmReset(){
+
+  
+
+}
+
 function resetPoints() { //reset all data in screen.
-  gameData.wins = 0;
-  gameData.losses = 0;
-  gameData.ties = 0;
-  gameData.result = '';
-  gameData.playersMove = '';
-  gameData.computersChoice = '';
 
-  updateData();
-
-  localStorage.removeItem('gameData');
+  let itemHTML = `
+  <div class = confirm-message>Are you sure you want reset your score?</div>
+  <div class="confirm-buttons">
+  <button class="js-confirm-reset">Yes</button>
+  <button class="js-denie-reset">No</button>
+  </div>
+  `;
+  document.querySelector('.js-display-reset').innerHTML = itemHTML
+  document.querySelector('.js-confirm-reset').addEventListener("click",()=>{
+    gameData.wins = 0;
+    gameData.losses = 0;
+    gameData.ties = 0;
+    gameData.result = '';
+    gameData.playersMove = '';
+    gameData.computersChoice = '';
+  
+    updateData();
+  
+    localStorage.removeItem('gameData');
+    document.querySelector('.js-display-reset').innerHTML = '';
+  })
+  document.querySelector(".js-denie-reset").addEventListener("click",()=>{
+    document.querySelector('.js-display-reset').innerHTML = '';
+  })
+ 
 
 }
 

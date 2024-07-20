@@ -40,14 +40,33 @@ body {
   border: none;
   padding: 8px 15px;
   font-size: 15px;
+  cursor: pointer;
 
 }
 .auto-play-button{
   border: none;
   padding: 8px 15px;
   font-size: 15px;
+  cursor: pointer;
 }
 .auto-play-activated{
   background-color: black;
   color: white;
+  
+}
+.confirm-message{
+  font-size: 15px;
+  display: inline-block;
+  margin-top: 15px;
+}
+.confirm-buttons{
+  display: inline-block;
+  margin-left: 5px;
+
+}
+.confirm-buttons button{
+  border: none;
+  padding: 4px 8px ;
+  margin-right: 5px;
+  cursor: pointer;
 }
